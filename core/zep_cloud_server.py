@@ -34,13 +34,16 @@ logger.info(f"[DEBUG] Files in core/: {os.listdir(os.path.dirname(os.path.abspat
 
 # Import our ZepCloudClient or use the local implementation as fallback
 try:
-    # First try to import from the core directory
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
     from zep_cloud_client import ZepCloudClient
     logger.info("✅ Imported ZepCloudClient from zep_cloud_client.py")
     use_new_client = True
-except ImportError:
-    logger.warning("⚠️ Failed to import ZepCloudClient from zep_cloud_client.py. Using local implementation.")
+except ImportError as e:
+    logger.warning(f"⚠️ Failed to import ZepCloudClient: {e}. Using local implementation.")
+    use_new_client = False
+except Exception as e:
+    logger.error(f"❌ Unexpected error importing ZepCloudClient: {e}")
+    import traceback
+    traceback.print_exc()
     use_new_client = False
     
     # ZEP API Configuration if using local implementation
