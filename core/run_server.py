@@ -20,20 +20,20 @@ def main():
     logger.info("🚀 Starting the Zep Cloud server")
     
     try:
-        # Import the server module
         server_module = import_module("zep_cloud_server")
         
-        # Get the MCP instance
         if hasattr(server_module, "mcp"):
             mcp = server_module.mcp
             
-            # Run the server on a specific host and port
             host = os.getenv("MCP_HOST", "0.0.0.0")
             port = int(os.getenv("MCP_PORT", "8080"))
-            logger.info(f"🌐 Server running at http://{host}:{port}")
+            logger.info(f"🌐 Server running with SSE at http://{host}:{port}/sse")
             
-            # Run the server
-            mcp.run()
+            mcp.run(
+                transport="sse",
+                host=host,
+                port=port
+            )
         else:
             logger.error("❌ MCP instance not found in server module")
             sys.exit(1)
@@ -43,4 +43,4 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main() 
+    main()
