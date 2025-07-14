@@ -4,4 +4,4 @@ httpx
 uvicorn
 requests
 python-dotenv
-
+zep-cloud
