@@ -43,6 +43,7 @@ except ImportError:
     
     # ZEP API Configuration if using local implementation
     ZEP_API_KEY = os.getenv("ZEP_API_KEY")
+    logger.info(f"[DEBUG] Loaded ZEP_API_KEY: {'set' if ZEP_API_KEY else 'missing'}")
     ZEP_CLOUD_API_URL = "https://api.getzep.com/api/v2"
 
 # If using the old client implementation, define it here
