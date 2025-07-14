@@ -532,7 +532,7 @@ def search_graph(user_id: str, query: str, limit: int = 10):
         query = enriched_query
     
     result = client.search_graph(user_id, query, limit)
-    
+    logger.info(f"[ZepClient] Response body: {result}")
     # Log the result structure for debugging
     result_info = {}
     if isinstance(result, dict):
