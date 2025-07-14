@@ -61,12 +61,13 @@ if not use_new_client:
             }
             self.fallback_mode = False
             self.test_connection()
-            logger.info(f"[DEBUG] Using API URL: {url}")
-            logger.info(f"[DEBUG] Request headers: {self.headers}")
+            
             
 
         def test_connection(self):
             """Test the connection to the Zep Cloud API."""
+            logger.info(f"[DEBUG] Using API URL: {url}")
+            logger.info(f"[DEBUG] Request headers: {self.headers}")
             try:
                 response = self._make_request("GET", f"{self.api_url}/health")
                 if response.status_code == 200:
