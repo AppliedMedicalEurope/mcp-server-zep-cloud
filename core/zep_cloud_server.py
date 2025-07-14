@@ -526,7 +526,8 @@ def search_graph(user_id: str, query: str, limit: int = 10):
         logger.info(f"Empty query detected, using 'user information' instead")
     elif "user" not in lower_query and "information" not in lower_query and "data" not in lower_query:
         # Add "user information" to the query if it doesn't already contain similar terms
-        enriched_query = f"{query} user information"
+        #enriched_query = f"{query} user information"
+        enriched_query = f"{query}"
         logger.info(f"Enriching query to: {enriched_query}")
         query = enriched_query
     
