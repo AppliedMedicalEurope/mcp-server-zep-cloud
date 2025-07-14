@@ -37,14 +37,12 @@ try:
     from zep_cloud_client import ZepCloudClient
     logger.info("✅ Imported ZepCloudClient from zep_cloud_client.py")
     use_new_client = True
-except ImportError as e:
-    logger.warning(f"⚠️ Failed to import ZepCloudClient: {e}. Using local implementation.")
-    use_new_client = False
 except Exception as e:
-    logger.error(f"❌ Unexpected error importing ZepCloudClient: {e}")
+    logger.error(f"❌ Failed to import ZepCloudClient: {e}")
     import traceback
     traceback.print_exc()
     use_new_client = False
+
     
     # ZEP API Configuration if using local implementation
     ZEP_API_KEY = os.getenv("ZEP_API_KEY")
