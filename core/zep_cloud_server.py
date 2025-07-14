@@ -30,6 +30,8 @@ mcp = FastMCP()
 # Track the number of tools registered
 tool_count = 0
 
+logger.info(f"[DEBUG] Files in core/: {os.listdir(os.path.dirname(os.path.abspath(__file__)))}")
+
 # Import our ZepCloudClient or use the local implementation as fallback
 try:
     # First try to import from the core directory
